@@ -1,0 +1,7 @@
+/.ruby-version
+/.bundle/
+/.idea/
+/log/*.log
+/public/
+/tmp/
+/vendor/bundle/
