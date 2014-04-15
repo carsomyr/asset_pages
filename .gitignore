@@ -1,7 +1,10 @@
 /.ruby-version
+/_config.yml
 /.bundle/
 /.idea/
+/_development/
+/_production/
+/_test/
 /log/*.log
-/public/
 /tmp/
 /vendor/bundle/
