@@ -18,7 +18,6 @@ require "pathname"
 require Pathname.new("../boot").expand_path(__FILE__)
 require "rails"
 require "rails/test_unit/railtie"
-require "sprockets/rails"
 
 if defined?(Bundler)
   Bundler.require(:default, :assets, Rails.env)
