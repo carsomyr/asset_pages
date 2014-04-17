@@ -21,7 +21,7 @@ task asset_pages: "asset_pages:build"
 
 namespace :asset_pages do
   desc "Run `jekyll build` for development"
-  task :build do
+  task build: "prepare_assets" do
     configs = []
 
     default_config = Rails.application.root.join("_config.yml")
@@ -43,4 +43,7 @@ namespace :asset_pages do
         exclude: ["assets"]
     )
   end
+
+  desc "Precompile assets and run `jekyll build` for production"
+  task precompile: "build"
 end
