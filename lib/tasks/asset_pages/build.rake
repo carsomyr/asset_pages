@@ -15,6 +15,7 @@
 # the License.
 
 require "jekyll"
+require "asset_pages/util"
 
 desc "An alias for asset_pages:build"
 task asset_pages: "asset_pages:build"
@@ -22,22 +23,11 @@ task asset_pages: "asset_pages:build"
 namespace :asset_pages do
   desc "Run `jekyll build` for development"
   task build: "prepare_assets" do
-    configs = []
-
-    default_config = Rails.application.root.join("_config.yml")
-
-    configs.push(default_config) \
-      if default_config.file?
-
-    configs += Rails.application.root.join("config/jekyll").children.select do |pathname|
-      pathname.file? && pathname.extname == ".yml"
-    end
-
     # Load plugins at the last possible moment.
     require "asset_pages/jekyll/plugins"
 
     Jekyll::Commands::Build.process(
-        config: configs,
+        config: AssetPages::Util.find_yaml_configs,
         source: Rails.application.root.join("public"),
         destination: Rails.application.root.join("_#{Rails.env}"),
         exclude: ["assets"]
