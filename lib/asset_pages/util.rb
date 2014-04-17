@@ -38,5 +38,15 @@ module AssetPages
     def self.jekyll_config
       ::Jekyll.configuration(config: find_yaml_configs)
     end
+
+    def self.fetch_nested(hash, *keys)
+      keys.reduce(hash) do |hash, key|
+        if hash.respond_to?(:[])
+          hash[key]
+        else
+          nil
+        end
+      end
+    end
   end
 end

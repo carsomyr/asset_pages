@@ -19,6 +19,10 @@ source "https://rubygems.org"
 gem "jekyll",
     github: "jekyll/jekyll"
 gem "rails", ">= 4.1.0"
+gem "rugged",
+    github: "libgit2/rugged",
+    branch: "development",
+    submodules: true
 
 group :assets do
   gem "uglifier"
