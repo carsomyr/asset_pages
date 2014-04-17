@@ -14,28 +14,9 @@
 # License for the specific language governing permissions and limitations under
 # the License.
 
-require "pathname"
-
-Rake.application.top_level_tasks.each do |task_name|
-  if !ENV["RAILS_ENV"]
-    case task_name
-      when "asset_pages", "asset_pages:build"
-        ENV["RAILS_ENV"] = "development"
-      when "asset_pages:precompile"
-        ENV["RAILS_ENV"] = "production"
-    end
-  else
-    break
+namespace :asset_pages do
+  task :prepare_assets do
+    Rake::Task["assets:precompile"].invoke \
+      if Rails.env == "production"
   end
-end
-
-require Pathname.pwd + "config/environment"
-
-Rails.application.load_tasks
-
-# We use RSpec; remove Test::Unit tasks.
-["test",
- "test:all",
- "test:all:db"].each do |task_name|
-  Rake::Task[task_name].clear
 end
