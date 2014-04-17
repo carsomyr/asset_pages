@@ -16,6 +16,14 @@ GIT
       safe_yaml (~> 1.0)
       toml (~> 0.1.0)
 
+GIT
+  remote: git://github.com/libgit2/rugged.git
+  revision: cf2c944543f65a8a847eff4079c9f55f3b94acb5
+  branch: development
+  submodules: true
+  specs:
+    rugged (0.19.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -164,5 +172,6 @@ DEPENDENCIES
   jekyll!
   rails (>= 4.1.0)
   rspec-rails
+  rugged!
   uglifier
   yui-compressor

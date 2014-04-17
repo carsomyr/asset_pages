@@ -21,7 +21,7 @@ Rake.application.top_level_tasks.each do |task_name|
     case task_name
       when "asset_pages", "asset_pages:build"
         ENV["RAILS_ENV"] = "development"
-      when "asset_pages:precompile"
+      when "asset_pages:precompile", "gh_pages:push"
         ENV["RAILS_ENV"] = "production"
     end
   else
