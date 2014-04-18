@@ -14,7 +14,16 @@
 # License for the specific language governing permissions and limitations under
 # the License.
 
-require "asset_pages/jekyll/plugins/asset_filter"
 require "asset_pages/jekyll/plugins/asset_tag"
-require "asset_pages/jekyll/plugins/javascript_include_tag"
-require "asset_pages/jekyll/plugins/stylesheet_link_tag"
+
+module Jekyll
+  class StylesheetLinkTag < AssetTag
+    def render(context)
+      super
+
+      stylesheet_link_tag(*sources, options)
+    end
+
+    Liquid::Template.register_tag("stylesheet_link_tag", self)
+  end
+end
