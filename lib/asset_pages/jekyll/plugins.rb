@@ -15,3 +15,4 @@
 # the License.
 
 require "asset_pages/jekyll/plugins/asset_filter"
+require "asset_pages/jekyll/plugins/asset_tags"
