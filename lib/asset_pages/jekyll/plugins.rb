@@ -17,4 +17,5 @@
 require "asset_pages/jekyll/plugins/asset_filter"
 require "asset_pages/jekyll/plugins/asset_tag"
 require "asset_pages/jekyll/plugins/javascript_include_tag"
+require "asset_pages/jekyll/plugins/prefetch"
 require "asset_pages/jekyll/plugins/stylesheet_link_tag"
