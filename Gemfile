@@ -25,6 +25,9 @@ gem "rugged",
     submodules: true
 
 group :assets do
+  # gem "requirejs-rails",
+  #     github: "jwhitley/requirejs-rails"
+  # gem "therubyracer", platforms: :ruby
   gem "uglifier"
   gem "yui-compressor"
 end
