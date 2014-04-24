@@ -1,4 +1,3 @@
-#!/usr/bin/env ruby
 # -*- coding: utf-8 -*-
 #
 # Copyright 2014 Roy Liu
@@ -15,7 +14,5 @@
 # License for the specific language governing permissions and limitations under
 # the License.
 
-require "pathname"
-APP_PATH = Pathname.new("../../config/application").expand_path(__FILE__).to_s
-require Pathname.new("../../config/boot").expand_path(__FILE__)
-require "rails/commands"
+require "asset_pages/version"
+require "asset_pages/rails/engine"
