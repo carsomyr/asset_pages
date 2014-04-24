@@ -14,24 +14,19 @@
 # License for the specific language governing permissions and limitations under
 # the License.
 
-source "https://rubygems.org"
+if defined?(Rake.application)
+  Rake.application.top_level_tasks.each do |task_name|
+    if ENV["RAILS_ENV"].nil?
+      case task_name
+        when "asset_pages", "asset_pages:build"
+          ENV["RAILS_ENV"] = "development"
+        when "asset_pages:precompile", "gh_pages:push"
+          ENV["RAILS_ENV"] = "production"
+      end
+    else
+      break
+    end
+  end
 
-gemspec
-
-# We need the bleeding edge versions; very unfortunate.
-gem "jekyll",
-    github: "jekyll/jekyll"
-gem "rugged",
-    github: "libgit2/rugged",
-    branch: "development",
-    submodules: true
-
-group :assets do
-  # gem "requirejs-rails",
-  #     github: "jwhitley/requirejs-rails"
-  # gem "therubyracer", platforms: :ruby
-end
-
-group :test do
-  gem "rspec-rails"
+  require Pathname.pwd.join("config/environment")
 end

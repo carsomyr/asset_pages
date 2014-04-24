@@ -14,22 +14,7 @@
 # License for the specific language governing permissions and limitations under
 # the License.
 
-require "pathname"
-
-Rake.application.top_level_tasks.each do |task_name|
-  if ENV["RAILS_ENV"].nil?
-    case task_name
-      when "asset_pages", "asset_pages:build"
-        ENV["RAILS_ENV"] = "development"
-      when "asset_pages:precompile", "gh_pages:push"
-        ENV["RAILS_ENV"] = "production"
-    end
-  else
-    break
-  end
-end
-
-require Pathname.pwd.join("config/environment")
+require "asset_pages/rails/rake_helper"
 
 Rails.application.load_tasks
 

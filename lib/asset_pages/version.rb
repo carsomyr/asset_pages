@@ -14,22 +14,21 @@
 # License for the specific language governing permissions and limitations under
 # the License.
 
-Rails.application.configure do
-  # Settings specified here will take precedence over those in `config/application.rb`.
+module AssetPages
+  # A module containing the gem version information.
+  module Version
+    # The major version.
+    MAJOR = 0
 
-  # Disable caching of classes and reload them with each request.
-  config.cache_classes = false
+    # The minor version.
+    MINOR = 9
 
-  # Enable full error reports and disable caching.
-  config.consider_all_requests_local = true
-  config.action_controller.perform_caching = false
+    # The patch version.
+    PATCH = 0
 
-  # Log deprecation notices.
-  config.active_support.deprecation = :log
-
-  # Enable asset pipeline debugging messages.
-  config.assets.debug = true
-
-  # Disable eager loading.
-  config.eager_load = false
+    # Gets the String representation of the gem version.
+    def self.to_s
+      "#{MAJOR}.#{MINOR}.#{PATCH}"
+    end
+  end
 end

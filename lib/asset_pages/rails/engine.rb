@@ -14,24 +14,10 @@
 # License for the specific language governing permissions and limitations under
 # the License.
 
-source "https://rubygems.org"
-
-gemspec
-
-# We need the bleeding edge versions; very unfortunate.
-gem "jekyll",
-    github: "jekyll/jekyll"
-gem "rugged",
-    github: "libgit2/rugged",
-    branch: "development",
-    submodules: true
-
-group :assets do
-  # gem "requirejs-rails",
-  #     github: "jwhitley/requirejs-rails"
-  # gem "therubyracer", platforms: :ruby
-end
-
-group :test do
-  gem "rspec-rails"
+module AssetPages
+  module Rails
+    class Engine < ::Rails::Engine
+      isolate_namespace AssetPages::Rails
+    end
+  end
 end
