@@ -39,7 +39,10 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "rugged", ">= 0.19.0"
   s.add_runtime_dependency "uglifier", ">= 2.5.0"
   s.add_runtime_dependency "yui-compressor", ">= 0.12.0"
-  s.files = (Pathname.glob("{app,config,lib,vendor}/**/*.rb") + Pathname.glob("bin/*")).map { |f| f.to_s }
+  s.files = (Pathname.glob("{app,config,lib,vendor}/**/*.rb") \
+    + Pathname.glob("lib/tasks/**/*.rake") \
+    + Pathname.glob("bin/*") \
+  ).map { |f| f.to_s }
   s.test_files = Pathname.glob("{features,spec}/*").map { |f| f.to_s }
   s.executables = Pathname.glob("bin/*").map { |f| f.basename.to_s }
   s.require_paths = ["lib"]
