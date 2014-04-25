@@ -72,4 +72,14 @@ module Jekyll
 
     Liquid::Template.register_tag("stylesheet_link_tag", self)
   end
+
+  class ImageTag < AssetTag
+    def render(context)
+      super
+
+      image_tag(*sources, options)
+    end
+
+    Liquid::Template.register_tag("image_tag", self)
+  end
 end
