@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: git://github.com/libgit2/rugged.git
-  revision: bfd08f7db1a6e42bf54aed7b52923bedead3876f
+  revision: c969f6d466b895f6c671578d3057176a6b77b454
   branch: development
   submodules: true
   specs:
@@ -27,7 +27,7 @@ GIT
 PATH
   remote: .
   specs:
-    asset_pages (0.9.2)
+    asset_pages (0.9.3)
       jekyll (>= 2.0.0.alpha)
       rails (>= 4.1.0)
       rugged (>= 0.19.0)
@@ -91,7 +91,7 @@ GEM
       sass (~> 3.2)
     json (1.8.1)
     liquid (2.5.5)
-    listen (2.7.1)
+    listen (2.7.2)
       celluloid (>= 0.15.2)
       celluloid-io (>= 0.15.0)
       rb-fsevent (>= 0.9.3)
