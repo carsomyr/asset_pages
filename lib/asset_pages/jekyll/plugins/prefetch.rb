@@ -28,13 +28,7 @@ module Jekyll
       @context = context
 
       super.split("\n", -1).each do |line|
-        options = {}
-
-        line = line.gsub(Liquid::TagAttributes) do |matched|
-          options[$1] = $2
-
-          ""
-        end
+        options, line = AssetTag.parse_options(line)
 
         line.scan(AssetPathPattern) do |path|
           asset_path(path, options.merge(debug: false))
