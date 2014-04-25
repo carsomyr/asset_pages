@@ -86,6 +86,14 @@ module AssetPages
           Pathname.new(@context.registers[:page]["dir"])
         end
 
+        def relativize(path)
+          Pathname.new(path).relative_path_from(page_dir).to_s
+        end
+
+        def relativized?(path)
+          path.start_with?("../") || "/#{path}".start_with?("#{assets_prefix}/")
+        end
+
         private
 
         def write_static_asset(asset_hash)

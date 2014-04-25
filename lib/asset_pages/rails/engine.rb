@@ -14,10 +14,28 @@
 # License for the specific language governing permissions and limitations under
 # the License.
 
+require "sprockets/rails"
+
 module AssetPages
   module Rails
     class Engine < ::Rails::Engine
-      isolate_namespace AssetPages::Rails
+      config.after_initialize do |app|
+        app.assets.context_class.class_eval do
+          include InstanceMethods
+        end
+      end
+
+      module InstanceMethods
+        def compute_asset_path(path, options = {})
+          path = super
+
+          if path.start_with?("#{assets_prefix}/")
+            Pathname.new(path).relative_path_from(Pathname.new(assets_prefix)).to_s
+          else
+            path
+          end
+        end
+      end
     end
   end
 end
