@@ -14,10 +14,16 @@
 # License for the specific language governing permissions and limitations under
 # the License.
 
-require "asset_pages/jekyll/plugins/asset_filter"
 require "asset_pages/jekyll/plugins/asset_tag"
-require "asset_pages/jekyll/plugins/image_tag"
-require "asset_pages/jekyll/plugins/javascript_include_tag"
-require "asset_pages/jekyll/plugins/prefetch"
-require "asset_pages/jekyll/plugins/requirejs_include_tag"
-require "asset_pages/jekyll/plugins/stylesheet_link_tag"
+
+module Jekyll
+  class ImageTag < AssetTag
+    def render(context)
+      super
+
+      image_tag(*sources, options)
+    end
+
+    Liquid::Template.register_tag("image_tag", self)
+  end
+end
