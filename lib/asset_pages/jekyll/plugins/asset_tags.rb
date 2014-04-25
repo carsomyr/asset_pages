@@ -31,13 +31,7 @@ module Jekyll
       super
 
       @sources = []
-      @options = {}
-
-      markup = markup.gsub(Liquid::TagAttributes) do |matched|
-        options[$1] = $2
-
-        ""
-      end
+      @options, markup = AssetTag.parse_options(markup)
 
       markup.scan(SourcePattern) do |path|
         sources.push(path)
@@ -54,6 +48,24 @@ module Jekyll
       else
         path
       end
+    end
+
+    def self.parse_options(markup)
+      options = {}
+
+      markup = markup.gsub(Liquid::TagAttributes) do |matched|
+        attr_name = $1
+        attr_value = $2
+
+        raise ArgumentError, "Please qualify the attribute value #{attr_value.dump} with quotes" \
+          if !(attr_value.size >= 2 && attr_value[0] == "\"" && attr_value[-1] == "\"")
+
+        options[attr_name] = attr_value[1...-1]
+
+        ""
+      end
+
+      [options, markup]
     end
   end
 
