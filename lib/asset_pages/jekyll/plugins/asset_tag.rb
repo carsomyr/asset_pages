@@ -49,7 +49,11 @@ module Jekyll
     end
 
     def compute_asset_path(path, options = {})
-      Pathname.new(super).relative_path_from(page_dir)
+      if !relativized?(path)
+        relativize(super)
+      else
+        path
+      end
     end
   end
 end
