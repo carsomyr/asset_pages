@@ -19,8 +19,6 @@ source "https://rubygems.org"
 gemspec
 
 # We need the bleeding edge versions; very unfortunate.
-gem "jekyll",
-    github: "jekyll/jekyll"
 gem "rugged",
     github: "libgit2/rugged",
     branch: "development",
