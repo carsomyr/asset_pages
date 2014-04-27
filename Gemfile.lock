@@ -1,24 +1,6 @@
 GIT
-  remote: git://github.com/jekyll/jekyll.git
-  revision: a619ce3e9b2ac29acf7e88252986db312a0da4e4
-  specs:
-    jekyll (2.0.0.alpha.3)
-      classifier (~> 1.3)
-      colorator (~> 0.1)
-      jekyll-coffeescript (~> 1.0)
-      jekyll-sass-converter (~> 1.0.0.rc3)
-      liquid (~> 2.5.5)
-      listen (~> 2.5)
-      maruku (= 0.7.0)
-      mercenary (~> 0.3.1)
-      pygments.rb (~> 0.5.0)
-      redcarpet (~> 3.1)
-      safe_yaml (~> 1.0)
-      toml (~> 0.1.0)
-
-GIT
   remote: git://github.com/libgit2/rugged.git
-  revision: c969f6d466b895f6c671578d3057176a6b77b454
+  revision: de19d5fb25fc83c6b88fab0ef5cd1e09c829e0a8
   branch: development
   submodules: true
   specs:
@@ -27,8 +9,8 @@ GIT
 PATH
   remote: .
   specs:
-    asset_pages (0.9.3)
-      jekyll (>= 2.0.0.alpha)
+    asset_pages (0.9.8)
+      jekyll (>= 2.0.0.rc1)
       rails (>= 4.1.0)
       rugged (>= 0.19.0)
       uglifier (>= 2.5.0)
@@ -85,6 +67,19 @@ GEM
     ffi (1.9.3)
     hike (1.2.3)
     i18n (0.6.9)
+    jekyll (2.0.0.rc1)
+      classifier (~> 1.3)
+      colorator (~> 0.1)
+      jekyll-coffeescript (~> 1.0)
+      jekyll-sass-converter (~> 1.0.0.rc3)
+      liquid (~> 2.5.5)
+      listen (~> 2.5)
+      maruku (= 0.7.0)
+      mercenary (~> 0.3.1)
+      pygments.rb (~> 0.5.0)
+      redcarpet (~> 3.1)
+      safe_yaml (~> 1.0)
+      toml (~> 0.1.0)
     jekyll-coffeescript (1.0.0)
       coffee-script (~> 2.2)
     jekyll-sass-converter (1.0.0.rc3)
@@ -132,7 +127,7 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rake (10.3.1)
     rb-fsevent (0.9.4)
-    rb-inotify (0.9.3)
+    rb-inotify (0.9.4)
       ffi (>= 0.5.0)
     redcarpet (3.1.1)
     rspec-core (2.14.8)
@@ -148,7 +143,7 @@ GEM
       rspec-expectations (~> 2.14.0)
       rspec-mocks (~> 2.14.0)
     safe_yaml (1.0.3)
-    sass (3.3.5)
+    sass (3.3.6)
     sprockets (2.12.1)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -180,6 +175,5 @@ PLATFORMS
 
 DEPENDENCIES
   asset_pages!
-  jekyll!
   rspec-rails
   rugged!

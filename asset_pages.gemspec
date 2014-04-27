@@ -34,7 +34,7 @@ Gem::Specification.new do |s|
     " assets, as well as deploying the Jekyll-generated site to platforms like GitHub Pages. In terms of usability," \
     " Asset Pages aims to support Rails conventions: Structure your project as you would with a Rails app, but end up" \
     " with a static site and production-ready assets."
-  s.add_runtime_dependency "jekyll", ">= 2.0.0.alpha"
+  s.add_runtime_dependency "jekyll", ">= 2.0.0.rc1"
   s.add_runtime_dependency "rails", ">= 4.1.0"
   s.add_runtime_dependency "rugged", ">= 0.19.0"
   s.add_runtime_dependency "uglifier", ">= 2.5.0"
