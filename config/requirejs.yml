@@ -1,0 +1,9 @@
+---
+modules:
+  - name: "application-ui"
+priority: ["application-ui"]
+shim:
+  "twitter/bootstrap":
+    deps: ["jquery"]
+    exports: "jQuery"
+enforceDefine: true

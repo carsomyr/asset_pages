@@ -1,0 +1,13 @@
+---
+---
+{% prefetch %}
+  jquery
+  twitter/bootstrap
+{% endprefetch %}
+{% javascript_include_tag application %}
+{% stylesheet_link_tag application %}
+{% image_tag scout.jpg %}
+{% requirejs_include_tag application-ui %}
+<script>
+    require(["application-ui"])
+</script>

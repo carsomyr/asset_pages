@@ -16,7 +16,8 @@
 
 source "https://rubygems.org"
 
-gem "asset_pages", ">= 0.9.8"
+gem "asset_pages",
+    path: "../asset_pages"
 
 # We need the bleeding edge versions; very unfortunate.
 gem "rugged",
@@ -25,14 +26,15 @@ gem "rugged",
     submodules: true
 
 group :assets do
-  # gem "coffee-rails"
-  # gem "less-rails"
-  # gem "requirejs-rails",
-  #     github: "jwhitley/requirejs-rails"
-  # gem "therubyracer", platforms: :ruby
-  # gem "twitter-bootstrap-rails",
-  #     github: "seyhunak/twitter-bootstrap-rails",
-  #     branch: "bootstrap3"
+  gem "coffee-rails"
+  gem "jquery-rails"
+  gem "less-rails"
+  gem "requirejs-rails",
+      github: "jwhitley/requirejs-rails"
+  gem "therubyracer", platforms: :ruby
+  gem "twitter-bootstrap-rails",
+      github: "seyhunak/twitter-bootstrap-rails",
+      branch: "bootstrap3"
 end
 
 group :test do

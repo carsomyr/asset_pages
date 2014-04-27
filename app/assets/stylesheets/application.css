@@ -1,0 +1,8 @@
+/*
+ *= require_self
+ *= require sub/included
+ */
+
+hi {
+    foreground-color: #000000;
+}
