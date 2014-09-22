@@ -25,14 +25,6 @@ module Jekyll
       def initialize(context)
         @context = context
       end
-
-      def compute_asset_path(path, options = {})
-        if !relativized?(path)
-          relativize(super)
-        else
-          path
-        end
-      end
     end
 
     def asset_path(path)

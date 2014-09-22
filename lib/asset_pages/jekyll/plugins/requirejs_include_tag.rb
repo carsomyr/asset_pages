@@ -49,18 +49,6 @@ module Jekyll
       end
     end
 
-    def javascript_path(path, options = {})
-      if RequireJsIncludeTag.precompiled_modules.include?(path)
-        Pathname.new(super).relative_path_from(Pathname.new(assets_prefix).relative_path_from(page_dir)).to_s
-      else
-        super
-      end
-    end
-
-    def baseUrl(path)
-      Pathname.new(assets_prefix).relative_path_from(page_dir).to_s
-    end
-
     def render(context)
       super
 
