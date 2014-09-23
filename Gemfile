@@ -16,13 +16,7 @@
 
 source "https://rubygems.org"
 
-gem "asset_pages", ">= 0.9.8"
-
-# We need the bleeding edge versions; very unfortunate.
-gem "rugged",
-    github: "libgit2/rugged",
-    branch: "development",
-    submodules: true
+gem "asset_pages", ">= 0.9.9"
 
 group :assets do
   # gem "coffee-rails"
