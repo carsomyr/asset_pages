@@ -18,12 +18,6 @@ source "https://rubygems.org"
 
 gemspec
 
-# We need the bleeding edge versions; very unfortunate.
-gem "rugged",
-    github: "libgit2/rugged",
-    branch: "development",
-    submodules: true
-
 group :assets do
   # gem "requirejs-rails",
   #     github: "jwhitley/requirejs-rails"

@@ -36,7 +36,7 @@ namespace :gh_pages do
 
     repo = Rugged::Repository.init_at(dest_dir.to_s)
     main_repo = Rugged::Repository.new(".")
-    main_repo_origin = Rugged::Remote.lookup(main_repo, "origin")
+    main_repo_origin = main_repo.remotes["origin"]
 
     repo_path_pattern = Regexp.new("[/:]([a-zA-Z_0-9\\-]+)/\\1\\.github\\.(?:com|io)\\z")
 
@@ -61,38 +61,30 @@ namespace :gh_pages do
     # Have commits write to the branch.
     repo.references.update("HEAD", "refs/heads/#{branch_name}")
 
-    # This is equivalent to `git remote -- set-head origin BRANCH`
-    repo.references.create("refs/remotes/origin/HEAD", "refs/remotes/origin/#{branch_name}") \
-      if !repo.references.exist?("refs/remotes/origin/HEAD")
-
     # Derive the author information from the main repository's HEAD.
     author = main_repo.head.target.author
     repo.config["user.name"] = author[:name]
     repo.config["user.email"] = author[:email]
 
-    # Derive the `origin` remote's URL from the main repository's remote of the same name.
-    Rugged::Remote.add(repo, "origin", main_repo_origin.url) \
-      if !Rugged::Remote.lookup(repo, "origin")
-
     # Create the commit with the given tree object.
-    Rugged::Commit.create(
-        repo,
-        message: "asset_pages: Automated GitHub Pages build",
-        parents: [],
-        update_ref: "HEAD",
-        tree: tree
-    )
-
-    # This is equivalent to `git branch --set-upstream-to origin/BRANCH -- BRANCH`
-    upstream = repo.references["refs/remotes/origin/#{branch_name}"]
-    upstream = repo.references.create("refs/remotes/origin/#{branch_name}", "refs/heads/#{branch_name}") \
-      if !upstream
-    branch = repo.branches[branch_name]
-    branch.upstream = upstream
+    if !repo.head_unborn?
+      repo.head.target.amend(
+          update_ref: "HEAD",
+          tree: tree
+      )
+    else
+      Rugged::Commit.create(
+          repo,
+          message: "asset_pages: Automated GitHub Pages build",
+          parents: [],
+          update_ref: "HEAD",
+          tree: tree
+      )
+    end
 
     # Shell out to `git` for pushing.
     Dir.chdir(dest_dir) do
-      sh "git", "push", "--force"
+      sh "git", "push", "--force", "--", main_repo_origin.url, branch_name
     end
   end
 end
