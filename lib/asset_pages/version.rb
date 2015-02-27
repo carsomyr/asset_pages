@@ -24,7 +24,7 @@ module AssetPages
     MINOR = 9
 
     # The patch version.
-    PATCH = 11
+    PATCH = 12
 
     # Gets the String representation of the gem version.
     def self.to_s
