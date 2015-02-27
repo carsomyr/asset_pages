@@ -101,7 +101,9 @@ module AssetPages
 
             # Write the asset into the staging directory.
             site_file.open("wb") { |f| f.write(asset_hash["source"]) } \
-              if !site_file.file? || site_file.mtime < Time.at(asset_hash["mtime"])
+              if !site_file.file? \
+                || site_file.mtime < Time.at(asset_hash["mtime"]) \
+                || (asset_hash["dependency_paths"] || []).find { |dep| site_file.mtime < dep["mtime"] }
           else
             staging_dir = Root.relative_path_from(Pathname.new(assets_prefix)).expand_path(assets_manifest.dir)
             site_file_relative = assets_dir + asset_hash["filename"]
