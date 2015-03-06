@@ -22,17 +22,24 @@ Rails.application.configure do
 
   # Enable full error reports and disable caching.
   config.consider_all_requests_local = true
+  config.action_controller.perform_caching = false
 
   # Print deprecation notices to stderr.
   config.active_support.deprecation = :stderr
 
-  # Enable Rails' static asset server and tune it.
-  config.serve_static_assets = true
+  # Enable Rails' static file server and tune it.
+  config.serve_static_files = true
   config.static_cache_control = "public, max-age=3600"
 
   # Disable rendering of exception templates, and instead raise exceptions.
   config.action_dispatch.show_exceptions = false
 
+  # Disable request forgery protection.
+  config.action_controller.allow_forgery_protection = false
+
   # Disable eager loading.
   config.eager_load = false
+
+  # Prevent Action Mailer from actually trying to deliver emails.
+  config.action_mailer.delivery_method = :test
 end

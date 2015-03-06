@@ -17,20 +17,24 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in `config/application.rb`.
 
+  # Use less verbose logging.
+  config.log_level = :info
+
   # Enable caching of classes and don't reload them with each request.
   config.cache_classes = true
 
   # Disable full error reports and enable caching.
   config.consider_all_requests_local = false
+  config.action_controller.perform_caching = true
 
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
 
-  # Disable Rails' static asset server and defer to something like Apache or Nginx.
-  config.serve_static_assets = false
+  # Disable Rails' static file server and defer to something like Apache or Nginx.
+  config.serve_static_files = false
 
   # Enable asset pipeline compression.
-  config.assets.css_compressor = :yui
+  config.assets.css_compressor = :sass
   config.assets.js_compressor = :uglifier
 
   # Disable on-the-fly asset pipeline compilation for missing assets.

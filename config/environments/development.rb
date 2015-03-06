@@ -22,6 +22,7 @@ Rails.application.configure do
 
   # Enable full error reports and disable caching.
   config.consider_all_requests_local = true
+  config.action_controller.perform_caching = false
 
   # Log deprecation notices.
   config.active_support.deprecation = :log
@@ -31,4 +32,7 @@ Rails.application.configure do
 
   # Disable eager loading.
   config.eager_load = false
+
+  # Don't actually send emails in development mode.
+  config.action_mailer.perform_deliveries = false
 end

@@ -16,7 +16,7 @@
 
 source "https://rubygems.org"
 
-gem "asset_pages", ">= 0.9.9"
+gem "asset_pages"
 
 group :assets do
   # gem "coffee-rails"
